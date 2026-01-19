@@ -1,161 +1,402 @@
-import Image from 'next/image'
+'use client';
+
+import { useState } from 'react';
+import Image from 'next/image'; // Import Image component
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      {/* Mobile-first navbar */}
-      <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Carter's Web Design
-            </h1>
-            <div className="flex space-x-4">
-              <a href="#work" className="text-sm font-medium text-gray-700 hover:text-blue-600">Work</a>
-              <a href="#contact" className="text-sm font-medium text-gray-700 hover:text-blue-600">Contact</a>
-            </div>
+    <main className="bg-black text-white">
+      {/* NAV */}
+      <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-xl z-50">
+        <div className="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg"></div>
+            <h1 className="font-black text-xl tracking-tight">CARTER'S WEB DESIGN</h1>
+          </div>
+          <div className="flex items-center gap-10">
+            <a href="#services" className="text-gray-300 hover:text-white transition">Services</a>
+            <a href="#work" className="text-gray-300 hover:text-white transition">Work</a>
+            <a href="#contact" className="bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition">
+              Let's Talk
+            </a>
           </div>
         </div>
       </nav>
 
-      {/* Hero - Mobile optimized */}
-      <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <div className="text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-6 leading-tight">
-            I build websites that
-            <span className="block">get clients</span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Simple, fast, mobile-first sites for local businesses. 
-            Starting at $1,200. Ready in 2 weeks.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="#contact"
-              className="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            >
-              Get Quote
-            </a>
-            <a 
-              href="#work"
-              className="border-2 border-gray-200 text-gray-800 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-all duration-200 hover:shadow-md"
-            >
-              See Work
-            </a>
+      {/* HERO */}
+      <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 opacity-20 blur-3xl"></div>
+        <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+        
+        <div className="relative max-w-5xl mx-auto text-center z-10">
+          <div className="inline-block mb-6 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+            <p className="text-sm font-semibold text-blue-400">🚀 Web Design That Converts</p>
           </div>
-        </div>
-      </section>
-
-      {/* Work Section */}
-      <section id="work" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-16">Recent Projects</h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Key to Massage */}
-            <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:-translate-y-2">
-              <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-white font-bold text-lg">Key to Massage</h3>
-                  <p className="text-blue-100 text-sm">Live booking demo</p>
+          <h1 className="text-7xl md:text-8xl font-black mb-8 leading-tight">
+            <span className="bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
+              Build Your Dream
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Website Today
+            </span>
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
+            Premium websites for small businesses. Fast turnaround, transparent pricing, and results that speak for themselves.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <a
+              href="#contact"
+              className="group relative px-10 py-5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl font-bold text-lg overflow-hidden shadow-xl shadow-purple-500/30"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition"></div>
+              <span className="relative flex items-center justify-center gap-2">
+                Start Your Project
+                <span className="group-hover:translate-x-1 transition">→</span>
+              </span>
+            </a>
+            <a
+              href="#work"
+              className="px-10 py-5 bg-white/10 backdrop-blur-md border-2 border-white/20 rounded-2xl font-bold text-lg hover:bg-white/20 transition"
+            >
+              View Portfolio
+            </a>
+          </div>
+
+          {/* Social Proof */}
+          <div className="mt-16 flex justify-center gap-12 text-center">
+            <div>
+              <div className="text-4xl font-black text-blue-400">10+</div>
+              <div className="text-sm text-gray-400">Projects Delivered</div>
+            </div>
+            <div>
+              <div className="text-4xl font-black text-purple-400">100%</div>
+              <div className="text-sm text-gray-400">Client Satisfaction</div>
+            </div>
+            <div>
+              <div className="text-4xl font-black text-pink-400">24hr</div>
+              <div className="text-sm text-gray-400">Response Time</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="services" className="py-32 px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-purple-600/10 to-transparent"></div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-black mb-6">
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                What I Build
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400">Services designed to help your business grow</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Card 1 */}
+            <div className="group relative p-8 bg-white/5 backdrop-blur-lg rounded-3xl border border-white/10 hover:border-blue-500/50 transition-all duration-300 hover:scale-105">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition"></div>
+              <div className="relative">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
+                  ⚡
                 </div>
-              </div>
-              <div className="p-6">
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  Mobile-first booking site. Square integration ready.
+                <h3 className="text-2xl font-bold mb-4">Lightning Fast</h3>
+                <p className="text-gray-400 text-lg leading-relaxed">
+                  Optimized for speed. Your site loads in under 1 second. Google rewards fast sites with better rankings.
                 </p>
-                <a href="https://key-to-massage.vercel.app" 
-                   className="text-blue-600 font-semibold hover:text-blue-800 text-sm flex items-center gap-1 group-hover:underline"
-                   target="_blank" rel="noopener noreferrer">
-                  View Live →
-                </a>
               </div>
             </div>
 
-            {/* Portfolio Card 2 */}
-            <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:-translate-y-2">
-              <div className="h-48 bg-gradient-to-br from-emerald-500 to-teal-600 relative overflow-hidden">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
-              </div>
-              <div className="p-6">
-                <h3 className="font-bold text-xl text-gray-800 mb-2">Local Plumber</h3>
-                <p className="text-gray-600 mb-4">Emergency calls 24/7</p>
-                <a href="#" className="text-emerald-600 font-semibold hover:text-emerald-800 text-sm flex items-center gap-1 group-hover:underline">
-                  Coming Soon →
-                </a>
+            {/* Card 2 */}
+            <div className="group relative p-8 bg-white/5 backdrop-blur-lg rounded-3xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:scale-105">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition"></div>
+              <div className="relative">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
+                  📱
+                </div>
+                <h3 className="text-2xl font-bold mb-4">Mobile First</h3>
+                <p className="text-gray-400 text-lg leading-relaxed">
+                  70% of your customers browse on mobile. Every site I build looks perfect on any device, any screen size.
+                </p>
               </div>
             </div>
 
-            {/* Portfolio Card 3 */}
-            <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:-translate-y-2">
-              <div className="h-48 bg-gradient-to-br from-orange-500 to-red-500 relative overflow-hidden">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
-              </div>
-              <div className="p-6">
-                <h3 className="font-bold text-xl text-gray-800 mb-2">Roofing Pro</h3>
-                <p className="text-gray-600 mb-4">Free quote calculator</p>
-                <a href="#" className="text-orange-600 font-semibold hover:text-orange-800 text-sm flex items-center gap-1 group-hover:underline">
-                  Coming Soon →
-                </a>
+            {/* Card 3 */}
+            <div className="group relative p-8 bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-lg rounded-3xl border border-white/10 hover:border-pink-500/50 transition-all duration-300 hover:scale-105">
+              <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-red-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition"></div>
+              <div className="relative">
+                <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
+                  🎯
+                </div>
+                <h3 className="text-2xl font-bold mb-4">Built to Convert</h3>
+                <p className="text-gray-400 text-lg leading-relaxed">
+                  Strategic design with clear CTAs, booking forms, and contact systems that turn visitors into customers.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-indigo-50 to-blue-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-8">Simple Pricing</h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
-              <h3 className="text-3xl font-bold text-gray-800 mb-4">$1,200</h3>
-              <p className="text-xl font-semibold text-gray-600 mb-6">1-Page Site</p>
-              <ul className="text-left space-y-3 mb-8 text-gray-600">
-                <li className="flex items-center gap-2">✅ Mobile-first design</li>
-                <li className="flex items-center gap-2">✅ Contact forms</li>
-                <li className="flex items-center gap-2">✅ Fast loading</li>
-                <li className="flex items-center gap-2">✅ SEO ready</li>
+      {/* PRICING */}
+      <section className="py-32 px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-purple-600/10 to-transparent"></div>
+        
+        <div className="max-w-7xl mx-auto relative">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-black mb-6">
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Simple Pricing
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400">No hidden fees. Cancel anytime.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Starter */}
+            <div className="p-8 bg-white/5 backdrop-blur-lg rounded-3xl border border-white/10 hover:border-white/20 transition">
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold mb-2">Starter</h3>
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-6xl font-black">$10</span>
+                  <span className="text-2xl text-gray-400">/month</span>
+                </div>
+                <p className="text-gray-400">+ $75 one-time setup</p>
+              </div>
+              
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3 text-lg">
+                  <span className="text-green-400 text-xl">✓</span>
+                  <span className="text-gray-300">1-page website</span>
+                </li>
+                <li className="flex items-start gap-3 text-lg">
+                  <span className="text-green-400 text-xl">✓</span>
+                  <span className="text-gray-300">Mobile responsive</span>
+                </li>
+                <li className="flex items-start gap-3 text-lg">
+                  <span className="text-green-400 text-xl">✓</span>
+                  <span className="text-gray-300">Contact form</span>
+                </li>
+                <li className="flex items-start gap-3 text-lg">
+                  <span className="text-green-400 text-xl">✓</span>
+                  <span className="text-gray-300">Free hosting</span>
+                </li>
               </ul>
-              <a href="#contact" className="w-full bg-blue-600 text-white py-4 px-6 rounded-xl font-semibold hover:bg-blue-700 transition-all duration-200 block">
-                Start Project
+
+              <a href="#contact" className="block text-center py-4 bg-white/10 hover:bg-white/20 rounded-xl font-bold transition">
+                Get Started
+              </a>
+            </div>
+
+            {/* Growth - FEATURED */}
+            <div className="relative p-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl scale-105 shadow-2xl shadow-purple-500/50">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full text-black text-sm font-bold">
+                MOST POPULAR
+              </div>
+              
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold mb-2">Growth</h3>
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-6xl font-black">$29</span>
+                  <span className="text-2xl opacity-80">/month</span>
+                </div>
+                <p className="opacity-80">+ $199 one-time setup</p>
+              </div>
+              
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3 text-lg">
+                  <span className="text-xl">✓</span>
+                  <span>Up to 5 pages</span>
+                </li>
+                <li className="flex items-start gap-3 text-lg">
+                  <span className="text-xl">✓</span>
+                  <span>Booking system</span>
+                </li>
+                <li className="flex items-start gap-3 text-lg">
+                  <span className="text-xl">✓</span>
+                  <span>Photo gallery</span>
+                </li>
+                <li className="flex items-start gap-3 text-lg">
+                  <span className="text-xl">✓</span>
+                  <span>SEO optimization</span>
+                </li>
+                <li className="flex items-start gap-3 text-lg">
+                  <span className="text-xl">✓</span>
+                  <span>Priority support</span>
+                </li>
+              </ul>
+
+              <a href="#contact" className="block text-center py-4 bg-white text-purple-600 hover:bg-gray-100 rounded-xl font-bold transition">
+                Get Started
+              </a>
+            </div>
+
+            {/* Boss */}
+            <div className="p-8 bg-white/5 backdrop-blur-lg rounded-3xl border border-white/10 hover:border-white/20 transition">
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold mb-2">Boss</h3>
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-6xl font-black">$59</span>
+                  <span className="text-2xl text-gray-400">/month</span>
+                </div>
+                <p className="text-gray-400">+ $499 one-time setup</p>
+              </div>
+              
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3 text-lg">
+                  <span className="text-green-400 text-xl">✓</span>
+                  <span className="text-gray-300">Unlimited pages</span>
+                </li>
+                <li className="flex items-start gap-3 text-lg">
+                  <span className="text-green-400 text-xl">✓</span>
+                  <span className="text-gray-300">E-commerce ready</span>
+                </li>
+                <li className="flex items-start gap-3 text-lg">
+                  <span className="text-green-400 text-xl">✓</span>
+                  <span className="text-gray-300">Advanced SEO</span>
+                </li>
+                <li className="flex items-start gap-3 text-lg">
+                  <span className="text-green-400 text-xl">✓</span>
+                  <span className="text-gray-300">Monthly updates</span>
+                </li>
+                <li className="flex items-start gap-3 text-lg">
+                  <span className="text-green-400 text-xl">✓</span>
+                  <span className="text-gray-300">24/7 support</span>
+                </li>
+              </ul>
+
+              <a href="#contact" className="block text-center py-4 bg-white/10 hover:bg-white/20 rounded-xl font-bold transition">
+                Get Started
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-8">Let's Build Yours</h2>
-          <p className="text-xl text-gray-600 mb-12 max-w-xl mx-auto leading-relaxed">
-            Text or call. I'll send mockups same day.
-          </p>
-          <div className="space-y-4">
-            <a href="tel:+15551234567" className="block bg-green-600 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:bg-green-700 transition-all duration-200 shadow-lg hover:shadow-xl mx-auto max-w-sm">
-              📱 Call / Text: (555) 123-4567
-            </a>
-            <a href="mailto:carter@carterswebdesign.com" className="block border-2 border-gray-200 text-gray-800 py-4 px-6 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-all duration-200 mx-auto max-w-sm">
-              ✉️ Email: carter@yourdomain.com
-            </a>
+      {/* PORTFOLIO */}
+      <section id="work" className="py-32 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-black mb-6">
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Recent Work
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400">Real projects. Real results.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="group relative bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-lg rounded-3xl border border-white/10 overflow-hidden hover:scale-105 transition-all duration-300">
+              <div className="h-80 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-6xl font-black mb-2">KJ CUTS</div>
+                  <div className="text-blue-400 text-sm uppercase tracking-widest">Barbershop</div>
+                </div>
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-3">KJ Cuts Barbershop</h3>
+                <p className="text-gray-400 mb-6 text-lg">
+                  Modern booking site with Calendly integration, service tiers, and mobile-optimized design.
+                </p>
+                <a href="https://kj-cuts.vercel.app" target="_blank" className="inline-flex items-center gap-2 text-blue-400 font-bold text-lg hover:gap-4 transition-all">
+                  View Live Site
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="group relative bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-lg rounded-3xl border-2 border-white/20 flex items-center justify-center p-12 hover:border-white/40 transition">
+              <div className="text-center">
+                <div className="text-6xl mb-4">🚀</div>
+                <div className="text-2xl font-bold text-gray-400 mb-2">Your Project Here</div>
+                <p className="text-gray-500">Let's build something amazing together</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto text-center">
-          <h3 className="text-2xl font-bold mb-4">Carter's Web Design</h3>
-          <p className="text-gray-400 mb-6">Simple sites that get clients. Starting at $1,200.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-sm text-gray-400">
-            <a href="#work" className="hover:text-white transition-colors">Portfolio</a>
-            <span>•</span>
-            <a href="tel:+15551234567" className="hover:text-white transition-colors">Call Now</a>
+      {/* CONTACT */}
+      <section id="contact" className="py-32 px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-600/10 via-purple-600/10 to-transparent"></div>
+        
+        <div className="max-w-2xl mx-auto relative">
+          <div className="text-center mb-12">
+            <h2 className="text-5xl md:text-6xl font-black mb-6">
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Let's Talk
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400">
+              Ready to grow your business? Fill out the form and I'll respond within 24 hours.
+            </p>
           </div>
+
+          <form action="https://api.web3forms.com/submit" method="POST" className="space-y-6">
+            <input type="hidden" name="access_key" value="627e215a-1165-4526-8d83-23674a7a4a94" />
+            <input type="hidden" name="redirect" value="https://web3forms.com/success" />
+            
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name"
+              required
+              className="w-full px-6 py-5 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl focus:border-blue-500 focus:outline-none transition text-lg"
+            />
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Your Email"
+              required
+              className="w-full px-6 py-5 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl focus:border-blue-500 focus:outline-none transition text-lg"
+            />
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Tell me about your project..."
+              rows={6}
+              required
+              className="w-full px-6 py-5 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl focus:border-blue-500 focus:outline-none transition text-lg resize-none"
+            ></textarea>
+            <button type="submit" className="w-full py-5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-[1.02] transition">
+              Send Message →
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/10 py-12 text-center">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg"></div>
+            <span className="font-black text-xl">Carter's Web Design</span>
+          </div>
+          <p className="text-gray-400">© 2025 Carter's Web Design. Built with Next.js & Tailwind CSS.</p>
         </div>
       </footer>
     </main>
-  )
+  );
 }
