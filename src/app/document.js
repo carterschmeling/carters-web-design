@@ -10,12 +10,18 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta property="og:image" content={`${process.env.NEXT_PUBLIC_BASE_URL}/logo.png`} />
+          {/* Existing meta tags */}
+          <meta name="description" content="Carter's Web Design - Premium websites for small businesses." />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/favicon.ico" />
+
+          {/* Add Open Graph meta tags */}
+          <meta property="og:image" content="https://carterscheling.com/logo.png" />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
           <meta property="og:title" content="Carter's Web Design" />
           <meta property="og:description" content="Premium websites for small businesses." />
-          <meta property="og:url" content={carterschmeling.com} />
+          <meta property="og:url" content="carterscheling.com" />
           <meta property="og:type" content="website" />
         </Head>
         <body>
