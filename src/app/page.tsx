@@ -16,28 +16,33 @@ export default function Home() {
 
   return (
     <main className="bg-black text-white selection:bg-purple-500/30">
-      {/* NAV - FIXED FOR MOBILE */}
-      <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-xl z-50 border-b border-white/5">
+      {/* FIXED NAV - Services & Work buttons positioned far right */}
+      <nav className="fixed top-0 w-full bg-black/95 backdrop-blur-xl z-50 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
           
           {/* Logo Area */}
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg shrink-0"></div>
-            <h1 className="font-black text-lg md:text-xl tracking-tight leading-none">
-              {/* Show 'CARTER' on mobile, Full name on Desktop */}
-              <span className="md:hidden">CARTER</span>
+            <h1 className="font-black text-lg md:text-xl tracking-tight leading-none text-white">
+              <span className="block md:hidden">CARTER</span>
               <span className="hidden md:block">CARTER'S WEB DESIGN</span>
             </h1>
           </div>
 
-          {/* Desktop Links (Hidden on Mobile) */}
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-            <a href="#services" className="hover:text-white transition">Services</a>
-            <a href="#work" className="hover:text-white transition">Work</a>
+          {/* Services and Work buttons - positioned FAR RIGHT on desktop */}
+          <div className="hidden md:flex items-center gap-12 ml-auto mr-16">
+            <a href="#services" className="text-sm font-medium text-gray-300 hover:text-white transition-all duration-300">Services</a>
+            <a href="#work" className="text-sm font-medium text-gray-300 hover:text-white transition-all duration-300">Work</a>
           </div>
 
-          {/* CTA Button */}
-          <a href="#contact" className="bg-gradient-to-r from-blue-500 to-purple-600 px-5 py-2 rounded-full font-bold text-sm md:text-base hover:shadow-lg hover:shadow-blue-500/30 transition whitespace-nowrap">
+          {/* Mobile Services and Work - positioned far right */}
+          <div className="flex md:hidden items-center gap-6 mr-6">
+            <a href="#services" className="text-sm font-medium text-gray-300 hover:text-white transition">Services</a>
+            <a href="#work" className="text-sm font-medium text-gray-300 hover:text-white transition">Work</a>
+          </div>
+
+          {/* CTA Button - positioned as far right as possible */}
+          <a href="#contact" className="bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-2.5 rounded-full font-bold text-sm md:text-base text-white hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 whitespace-nowrap">
             Let's Talk
           </a>
         </div>
@@ -69,20 +74,16 @@ export default function Home() {
             Premium websites for small businesses. Fast turnaround, transparent pricing, and results that speak for themselves.
           </p>
           
-          <div className="flex flex-col sm:flex-row justify-center gap-4 px-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-8 px-4">
             <a
               href="#contact"
-              className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl font-bold text-lg overflow-hidden"
+              className="px-8 py-4 bg-blue-600 text-white font-bold text-lg rounded-lg hover:bg-blue-700 transition"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition"></div>
-              <span className="relative flex items-center justify-center gap-2">
-                Start Your Project
-                <span className="group-hover:translate-x-1 transition">→</span>
-              </span>
+              Start Your Project
             </a>
             <a
               href="#work"
-              className="px-8 py-4 bg-white/10 backdrop-blur-md border-2 border-white/20 rounded-2xl font-bold text-lg hover:bg-white/20 transition"
+              className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold text-lg rounded-lg hover:bg-white/10 transition"
             >
               View Portfolio
             </a>
@@ -257,11 +258,17 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Placeholder */}
-            <div className="rounded-3xl border-2 border-dashed border-white/10 flex items-center justify-center p-12 text-center min-h-[300px]">
-              <div>
-                <p className="text-2xl font-bold text-gray-500 mb-2">Your Project Here</p>
-                <p className="text-gray-600">Let's build something amazing</p>
+            {/* Key to Massage */}
+            <div className="group relative bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-lg rounded-3xl border border-white/10 overflow-hidden hover:border-purple-500/50 transition-all">
+              <div className="h-64 bg-gradient-to-br from-gray-900 via-purple-900 to-pink-900 flex items-center justify-center">
+                <h3 className="text-white text-4xl font-black tracking-tighter">KEY TO MASSAGE</h3>
+              </div>
+              <div className="p-8">
+                <h4 className="text-2xl font-bold mb-2">Key to Massage</h4>
+                <p className="text-gray-400 mb-6">A site designed for wellness and relaxation.</p>
+                <a href="https://key-to-massage.vercel.app" target="_blank" className="text-purple-400 font-bold hover:text-purple-300 flex items-center gap-2">
+                  View Live Site <span>→</span>
+                </a>
               </div>
             </div>
           </div>
